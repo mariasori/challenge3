@@ -11,15 +11,9 @@ var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["!","@","#","$","%","^","&","*","(",")","+","`","~","-","=","[","]","{","}","|",";",":",",",".","/","<",">","?"];
 
-//Variables
-var confirmLength = "";
-var confirmLower;
-var confirmUpper;
-var confirmNumber;
-var confirmSpecChar;
-
 //password generator function
 function generatePassword(){
+    
     //Prompt to confirm number of characters
     var confirmLength = (window.prompt("How long would you like your password to be?  Choose a number between 8 and 128!"));
         //Loop if 8 > answer > 128
@@ -27,6 +21,7 @@ function generatePassword(){
             alert("Please choose a number between 8 and 128!");
             var confirmLength = (window.prompt("How long would you like your password to be?  Choose a number between 8 and 128!"));
         };
+  
     // Password choices
     var confirmLower = confirm("Click OK to confirm if you would like the password to include lowercase letters.");
     var confirmUpper = confirm("Click OK to confirm if you would like the password to include uppercase letters.");
@@ -43,26 +38,24 @@ function generatePassword(){
 
     //creates array containing all chosen characters
     var pwCharacters = [];
+ 
     // combining password choices into one array 
     if (confirmLower) {
         pwCharacters = pwCharacters.concat(lowercase)
     };
-
     if (confirmUpper) {
         pwCharacters = pwCharacters.concat(uppercase)
     };
-
     if (confirmNumber) {
         pwCharacters = pwCharacters.concat(number)
     }
-
     if (confirmSpecChar) {
         pwCharacters = pwCharacters.concat(specialChar);
     };
 
     //creating random password from new array
     var randomPassword = "";
-    for (var i = 0; i <= confirmLength; i++) {
+    for (var i = 0; i < confirmLength; i++) {
         randomPassword = randomPassword + pwCharacters[Math.floor(Math.random() * pwCharacters.length)];
         console.log(randomPassword);
     }
