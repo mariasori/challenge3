@@ -1,17 +1,15 @@
 //DOM Variables
-var password = document.getElementById('password');
+var pwbox = document.getElementById('password');
 var generate = document.getElementById('generate');
 
 //generate button
-
-//generate.addEventListener('click', writePassword);
+generate.addEventListener('click', writePassword);
 
 //Character Arrays
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["!","@","#","$","%","^","&","*","(",")","+","`","~","-","=","[","]","{","}","|",";",":",",",".","/","<",">","?"];
-
 
 //Variables
 var confirmLength = "";
@@ -45,7 +43,7 @@ function generatePassword(){
 
     //creates array containing all chosen characters
     var pwCharacters = [];
-    // combining password choices into one array
+    // combining password choices into one array 
     if (confirmLower) {
         pwCharacters = pwCharacters.concat(lowercase)
     };
@@ -64,7 +62,6 @@ function generatePassword(){
 
     //creating random password from new array
     var randomPassword = "";
-
     for (var i = 0; i <= confirmLength; i++) {
         randomPassword = randomPassword + pwCharacters[Math.floor(Math.random() * pwCharacters.length)];
         console.log(randomPassword);
@@ -72,5 +69,8 @@ function generatePassword(){
     return randomPassword;
 };
 
-generatePassword();
 // generate password function and put into text box
+function writePassword() {
+    var password = generatePassword();
+    pwbox.value = password;
+};
