@@ -4,6 +4,8 @@ var generate = document.getElementById('generate');
 
 //generate button
 
+//generate.addEventListener('click', writePassword);
+
 //Character Arrays
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -32,20 +34,38 @@ function generatePassword(){
     var confirmUpper = confirm("Click OK to confirm if you would like the password to include uppercase letters.");
     var confirmNumber = confirm("Click OK to confirm if you would like the password to include numbers.");
     var confirmSpecChar = confirm("Click OK to confirm if you would like the password to include special characters.");
-    //loop if one isn't selected
-    while(confirmLower === false && confirmUpper === false && confirmSpecChar === false && confirmNumber === false) {
-        alert ("You must choose at least one type of character for password.");
-        var confirmLower = confirm("Click OK to confirm if you would like the password to include lowercase letters.");
-        var confirmUpper = confirm("Click OK to confirm if you would like the password to include uppercase letters.");
-        var confirmNumber = confirm("Click OK to confirm if you would like the password to include numbers.");
-        var confirmSpecChar = confirm("Click OK to confirm if you would like the password to include special characters.");
+        //loop if one isn't selected
+        while(confirmLower === false && confirmUpper === false && confirmSpecChar === false && confirmNumber === false) {
+            alert ("You must choose at least one type of character for password.");
+            var confirmLower = confirm("Click OK to confirm if you would like the password to include lowercase letters.");
+            var confirmUpper = confirm("Click OK to confirm if you would like the password to include uppercase letters.");
+            var confirmNumber = confirm("Click OK to confirm if you would like the password to include numbers.");
+            var confirmSpecChar = confirm("Click OK to confirm if you would like the password to include special characters.");
+        };
+
+    //creates array containing all chosen characters
+    var pwCharacters = [];
+    // combining password choices into one array
+    if (confirmLower) {
+        pwCharacters = pwCharacters.concat(lowercase)
     };
+
+    if (confirmUpper) {
+        pwCharacters = pwCharacters.concat(uppercase)
+    };
+
+    if (confirmNumber) {
+        pwCharacters = pwCharacters.concat(number)
+    }
+
+    if (confirmSpecChar) {
+        pwCharacters = pwCharacters.concat(specialChar);
+    };
+
+    console.log(pwCharacters);
 };
 
-//creates array containing all chosen characters
-
-// combining password choices into one array
-
+generatePassword();
 //creating random password from new array
 
 // generate password function and put into text box
