@@ -62,10 +62,15 @@ function generatePassword(){
         pwCharacters = pwCharacters.concat(specialChar);
     };
 
-    console.log(pwCharacters);
+    //creating random password from new array
+    var randomPassword = "";
+
+    for (var i = 0; i <= confirmLength; i++) {
+        randomPassword = randomPassword + pwCharacters[Math.floor(Math.random() * pwCharacters.length)];
+        console.log(randomPassword);
+    }
+    return randomPassword;
 };
 
 generatePassword();
-//creating random password from new array
-
 // generate password function and put into text box
